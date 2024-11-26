@@ -43,7 +43,7 @@ export const TravelDirections = () => {
 							key={el.id}
 							title={el.translations[0]?.name}
 							price={el.cost}
-							id={el.id}
+							link={el.url}
 							image={el.image}
 							days={el.tourDays.length}
 						/>

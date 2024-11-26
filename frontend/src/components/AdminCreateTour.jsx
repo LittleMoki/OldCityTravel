@@ -89,6 +89,7 @@ const AdminCreateTour = ({ refresh }) => {
 	const handleSubmit = async () => {
 		const formData = new FormData()
 		formData.append('cost', tourData.cost)
+		formData.append('url', tourData.url)
 		formData.append('image', tourData.image)
 		formData.append('translations', JSON.stringify(tourData.translations))
 		formData.append('tourDays', JSON.stringify(tourData.tourDays))
@@ -100,27 +101,27 @@ const AdminCreateTour = ({ refresh }) => {
 			})
 			await response.json()
 			refresh()
-			setTourData({
-				cost: '',
-				image: null,
-				translations: [
-					{ language: 'ru', name: '' },
-					{ language: 'uz', name: '' },
-					{ language: 'en', name: '' },
-				],
-				tourDays: [
-					{
-						breakfast: false,
-						lunch: false,
-						dinner: false,
-						translations: [
-							{ name: '', description: '', language: 'ru' },
-							{ name: '', description: '', language: 'uz' },
-							{ name: '', description: '', language: 'en' },
-						],
-					},
-				],
-			})
+			// setTourData({
+			// 	cost: '',
+			// 	image: null,
+			// 	translations: [
+			// 		{ language: 'ru', name: '' },
+			// 		{ language: 'uz', name: '' },
+			// 		{ language: 'en', name: '' },
+			// 	],
+			// 	tourDays: [
+			// 		{
+			// 			breakfast: false,
+			// 			lunch: false,
+			// 			dinner: false,
+			// 			translations: [
+			// 				{ name: '', description: '', language: 'ru' },
+			// 				{ name: '', description: '', language: 'uz' },
+			// 				{ name: '', description: '', language: 'en' },
+			// 			],
+			// 		},
+			// 	],
+			// })
 		} catch (error) {
 			console.error('Ошибка создания тура:', error)
 		}
@@ -133,7 +134,7 @@ const AdminCreateTour = ({ refresh }) => {
 		}
 		setTourData({ ...tourData, tourDays: updatedDays })
 	}
-
+	console.log(tourData)
 	return (
 		<Card className='dark px-3 mb-4 py-5 flex flex-col gap-5 black'>
 			<Input
@@ -157,6 +158,12 @@ const AdminCreateTour = ({ refresh }) => {
 							onChange={e =>
 								handleTranslationChange(index, 'name', e.target.value)
 							}
+						/>
+						Описание тура
+						<CustomEditor
+							id={`Описание (${translation.language.toUpperCase()})`}
+							value={translation.description}
+							fn={e => handleTranslationChange(index, 'description', e)}
 						/>
 					</div>
 				))}

@@ -20,7 +20,7 @@ export const ProductPage = () => {
 	const { t } = useTranslation()
 	const [data, setData] = useState([])
 	const fetchData = async () => {
-		const response = await fetch(`${BASE_URL}/tours/${id}?lang=${locale}`)
+		const response = await fetch(`${BASE_URL}/tourSlag/${id}?lang=${locale}`)
 		const data = await response.json()
 		setData(data)
 	}
@@ -31,6 +31,9 @@ export const ProductPage = () => {
 	const title = data?.translations?.filter(el => el.language === locale)[0]
 		?.name
 	const days = data?.tourDays?.length
+	const description = data?.translations?.find(
+		el => el.language === locale
+	)?.description
 	return (
 		<>
 			<Header />
@@ -74,6 +77,15 @@ export const ProductPage = () => {
 									{t('productPage.price')}:{' '}
 									<span className='font-normal'>{data?.cost}$</span>
 								</p>
+							</div>
+							<div className='px-5'>
+								<h4 className='text-xl font-semibold'>{t('description')}</h4>
+
+								<div
+									dangerouslySetInnerHTML={{
+										__html: description,
+									}}
+								/>
 							</div>
 							<Reserve title={title} />
 						</div>

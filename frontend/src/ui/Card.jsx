@@ -5,7 +5,15 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Link, useParams } from 'react-router-dom'
 import { BASE_PHOTO_URL } from '../api/api'
 
-export const Card = ({ title = '', id, image, price, days, columns, rows }) => {
+export const Card = ({
+	title = '',
+	image,
+	link = '',
+	price,
+	days,
+	columns,
+	rows,
+}) => {
 	const { t } = useTranslation()
 	const { locale } = useParams()
 
@@ -25,7 +33,7 @@ export const Card = ({ title = '', id, image, price, days, columns, rows }) => {
 	}
 
 	return (
-		<Link to={`/${locale}/tour/${id}`}>
+		<Link to={`/${locale}/tour/${link}`}>
 			<div
 				className={
 					'cursor-pointer w-full h-full max-h-[300px] overflow-hidden relative rounded-3xl shadow-[10px_10px_5px_1px_rgba(0,0,0,0.2)]'

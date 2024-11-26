@@ -56,7 +56,7 @@ export const Reserve = ({ title }) => {
 	return (
 		<>
 			<Button
-				className='bg-[#F5B31C] border-[#F5B31C] text-black font-medium sm:py-4 p-3 sm:px-7 px-5 rounded-[40px] border transition-all hover:-translate-y-1'
+				className='bg-[#F5B31C] border-[#F5B31C] text-black font-medium sm:py-4 p-3 sm:px-7 px-5 text-lg rounded-[40px] border transition-all hover:-translate-y-1'
 				endContent={<KeyboardArrowRightIcon />}
 				onPress={onOpen}
 			>

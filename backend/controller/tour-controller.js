@@ -2,8 +2,7 @@ const { prisma } = require('../prisma/prisma-client')
 
 const TourController = {
 	createTour: async (req, res) => {
-		const { cost, translations, tourDays } = req.body
-
+		const { cost, translations, tourDays, url } = req.body
 		if (!req.file || !cost || !translations || !tourDays) {
 			return res
 				.status(400)
@@ -11,17 +10,27 @@ const TourController = {
 		}
 
 		try {
+			const existingTour = await prisma.tour.findMany({
+				where: { url },
+			})
+			if (existingTour.length > 0) {
+				return res
+					.status(400)
+					.json({ error: 'URL уже используется для другого тура' })
+			}
 			const parsedTranslations = JSON.parse(translations)
 			const parsedTourDays = JSON.parse(tourDays)
 
 			const tour = await prisma.tour.create({
 				data: {
 					cost,
+					url,
 					image: req.file.originalname,
 					translations: {
 						create: parsedTranslations.map(t => ({
 							language: t.language,
 							name: t.name,
+							description: t.description,
 						})),
 					},
 					tourDays: {
@@ -97,10 +106,10 @@ const TourController = {
 	},
 	getTourSlag: async (req, res) => {
 		const { url } = req.params
-		const { lang } = req.query // Убедитесь, что `lang` передаётся корректно
-	
+		const { lang = 'en' } = req.query
+
 		try {
-			const tours = await prisma.tour.findMany({
+			const tour = await prisma.tour.findUnique({
 				where: { url },
 				include: {
 					translations: { where: { language: lang } },
@@ -111,16 +120,10 @@ const TourController = {
 					},
 				},
 			})
-	
-			if (tours.length === 0) {
+			if (!tour) {
 				return res.status(404).json({ error: 'Тур не найден' })
 			}
-	
-			if (tours.length > 1) {
-				return res.status(400).json({ error: 'Найдено несколько туров с одинаковым URL' })
-			}
-	
-			res.status(200).json(tours[0])
+			res.status(200).json(tour)
 		} catch (error) {
 			console.error('Ошибка при получении тура:', error)
 			res
@@ -128,7 +131,6 @@ const TourController = {
 				.json({ error: error.message || 'Ошибка при получении тура' })
 		}
 	},
-	
 	getTourTranslate: async (req, res) => {
 		const { id } = req.params
 		const { lang = 'en' } = req.query
@@ -158,7 +160,7 @@ const TourController = {
 	},
 	updateTour: async (req, res) => {
 		const { id } = req.params
-		const { cost, translations, tourDays } = req.body
+		const { cost, translations, tourDays, url } = req.body
 		// Check for missing or invalid data
 		if (!cost || !translations || !tourDays) {
 			return res
@@ -167,18 +169,32 @@ const TourController = {
 		}
 
 		try {
+			const existingTour = await prisma.tour.findMany({
+				where: {
+					url,
+					NOT: { id: Number(id) }, // Исключить текущий тур из проверки
+				},
+			})
+
+			if (existingTour.length > 0) {
+				return res
+					.status(400)
+					.json({ error: 'URL уже используется для другого тура' })
+			}
 			const parsedTranslations = translations ? JSON.parse(translations) : []
 			const parsedTourDays = tourDays ? JSON.parse(tourDays) : []
 			const updatedTour = await prisma.tour.update({
 				where: { id: Number(id) },
 				data: {
 					cost,
+					url,
 					image: req?.file?.originalname,
 					translations: {
 						deleteMany: {},
 						create: parsedTranslations.map(t => ({
 							language: t.language,
 							name: t.name,
+							description: t.description,
 						})),
 					},
 					tourDays: {

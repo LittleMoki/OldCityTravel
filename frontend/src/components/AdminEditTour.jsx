@@ -16,6 +16,7 @@ const AdminEditTour = () => {
 	const navigate = useNavigate()
 	const [data, setData] = useState({
 		cost: '',
+		url: '',
 		translations: [],
 		tourDays: [],
 	})
@@ -64,8 +65,8 @@ const AdminEditTour = () => {
 	}
 
 	// Изменение стоимости
-	const handleCostChange = value => {
-		setData(prevData => ({ ...prevData, cost: value }))
+	const handleChange = (field, value) => {
+		setData(prevData => ({ ...prevData, [field]: value }))
 	}
 
 	// Изменение состояния чекбоксов
@@ -100,6 +101,7 @@ const AdminEditTour = () => {
 	const handleSubmit = async () => {
 		const formData = new FormData()
 		formData.append('cost', data.cost)
+		formData.append('url', data.url)
 		formData.append('image', data.image)
 		formData.append('translations', JSON.stringify(data.translations))
 		formData.append('tourDays', JSON.stringify(data.tourDays))
@@ -111,11 +113,12 @@ const AdminEditTour = () => {
 			await response.json()
 			setData({
 				cost: '',
+				url: '',
 				image: null,
 				translations: [
-					{ language: 'ru', name: '' },
-					{ language: 'uz', name: '' },
-					{ language: 'en', name: '' },
+					{ language: 'ru', name: '', description: '' },
+					{ language: 'uz', name: '', description: '' },
+					{ language: 'en', name: '', description: '' },
 				],
 				tourDays: [
 					{
@@ -140,6 +143,7 @@ const AdminEditTour = () => {
 	const handleFileChange = e => {
 		setData({ ...data, image: e.target.files[0] })
 	}
+	console.log(data)
 	return (
 		<div className='min-h-screen max-w-[1200px] mx-auto p-4'>
 			{/* Цена тура */}
@@ -147,7 +151,12 @@ const AdminEditTour = () => {
 				<Input
 					label='Цена тура'
 					value={data.cost}
-					onChange={e => handleCostChange(e.target.value)} // Используем handleCostChange
+					onChange={e => handleChange('cost', e.target.value)} // Используем handleCostChange
+				/>
+				<Input
+					label='Ссылка на тур'
+					value={data.url}
+					onChange={e => handleChange('url', e.target.value)}
 				/>
 				<Input type='file' label='Изображение' onChange={handleFileChange} />
 
@@ -160,6 +169,12 @@ const AdminEditTour = () => {
 							onChange={e =>
 								handleTranslationChange(index, 'name', e.target.value)
 							}
+						/>
+						Описание тура
+						<CustomEditor
+							id={`Описание (${translation.language.toUpperCase()})`}
+							value={translation.description}
+							fn={e => handleTranslationChange(index, 'description', e)}
 						/>
 					</div>
 				))}
