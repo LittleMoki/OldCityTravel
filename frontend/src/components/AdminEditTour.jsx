@@ -143,7 +143,6 @@ const AdminEditTour = () => {
 	const handleFileChange = e => {
 		setData({ ...data, image: e.target.files[0] })
 	}
-	console.log(data)
 	return (
 		<div className='min-h-screen max-w-[1200px] mx-auto p-4'>
 			{/* Цена тура */}

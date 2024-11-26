@@ -101,27 +101,27 @@ const AdminCreateTour = ({ refresh }) => {
 			})
 			await response.json()
 			refresh()
-			// setTourData({
-			// 	cost: '',
-			// 	image: null,
-			// 	translations: [
-			// 		{ language: 'ru', name: '' },
-			// 		{ language: 'uz', name: '' },
-			// 		{ language: 'en', name: '' },
-			// 	],
-			// 	tourDays: [
-			// 		{
-			// 			breakfast: false,
-			// 			lunch: false,
-			// 			dinner: false,
-			// 			translations: [
-			// 				{ name: '', description: '', language: 'ru' },
-			// 				{ name: '', description: '', language: 'uz' },
-			// 				{ name: '', description: '', language: 'en' },
-			// 			],
-			// 		},
-			// 	],
-			// })
+			setTourData({
+				cost: '',
+				image: null,
+				translations: [
+					{ language: 'ru', name: '', description: '' },
+					{ language: 'uz', name: '', description: '' },
+					{ language: 'en', name: '', description: '' },
+				],
+				tourDays: [
+					{
+						breakfast: false,
+						lunch: false,
+						dinner: false,
+						translations: [
+							{ name: '', description: '', language: 'ru' },
+							{ name: '', description: '', language: 'uz' },
+							{ name: '', description: '', language: 'en' },
+						],
+					},
+				],
+			})
 		} catch (error) {
 			console.error('Ошибка создания тура:', error)
 		}
@@ -134,7 +134,6 @@ const AdminCreateTour = ({ refresh }) => {
 		}
 		setTourData({ ...tourData, tourDays: updatedDays })
 	}
-	console.log(tourData)
 	return (
 		<Card className='dark px-3 mb-4 py-5 flex flex-col gap-5 black'>
 			<Input
