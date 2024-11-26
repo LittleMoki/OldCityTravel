@@ -46,6 +46,7 @@ const upload = multer({ storage: storage })
 
 router.get('/tour', TourController.getTours)
 router.get('/tour/:id', TourController.getTour)
+router.get('/tour/:url', TourController.getTourSlag)
 router.get('/tours/:id', TourController.getTourTranslate)
 router.post('/tour', upload.single('image'), TourController.createTour)
 router.delete('/tour/:id', TourController.deleteTour)

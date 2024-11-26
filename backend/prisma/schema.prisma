@@ -9,27 +9,29 @@ datasource db {
 
 model tour {
   id           Int             @id @default(autoincrement())
-  image        String
   cost         String
-  tourDays     tourDays[]
+  image        String
+  url          String          @unique
   translations TourTranslate[]
+  tourDays     tourDays[]
 }
 
 model TourTranslate {
-  id       Int    @id @default(autoincrement())
-  tour     tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
-  tourId   Int
-  language String // 'ru', 'en', 'uz'
-  name     String
+  id          Int    @id @default(autoincrement())
+  tourId      Int
+  language    String
+  description String
+  name        String
+  tour        tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
 }
 
 model tourDays {
   id           Int                   @id @default(autoincrement())
   breakfast    Boolean
+  tourId       Int
   lunch        Boolean
   dinner       Boolean
   tour         tour                  @relation(fields: [tourId], references: [id], onDelete: Cascade)
-  tourId       Int
   translations tourDaysTranslation[]
 }
 
@@ -37,7 +39,7 @@ model tourDaysTranslation {
   id          Int      @id @default(autoincrement())
   name        String
   description String
-  tourDays    tourDays @relation(fields: [tourDaysId], references: [id], onDelete: Cascade)
-  language    String // 'ru', 'en', 'uz'
   tourDaysId  Int
+  language    String
+  tourDays    tourDays @relation(fields: [tourDaysId], references: [id], onDelete: Cascade)
 }

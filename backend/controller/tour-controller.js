@@ -95,6 +95,32 @@ const TourController = {
 				.json({ error: error.message || 'Ошибка при получении тура' })
 		}
 	},
+	getTourSlag: async (req, res) => {
+		const { url } = req.params
+
+		try {
+			const tour = await prisma.tour.findUnique({
+				where: { url },
+				include: {
+					translations: { where: { language: lang } },
+					tourDays: {
+						include: {
+							translations: { where: { language: lang } },
+						},
+					},
+				},
+			})
+			if (!tour) {
+				return res.status(404).json({ error: 'Тур не найден' })
+			}
+			res.status(200).json(tour)
+		} catch (error) {
+			console.error('Ошибка при получении тура:', error)
+			res
+				.status(500)
+				.json({ error: error.message || 'Ошибка при получении тура' })
+		}
+	},
 	getTourTranslate: async (req, res) => {
 		const { id } = req.params
 		const { lang = 'en' } = req.query
