@@ -31,7 +31,6 @@ export const ProductPage = () => {
 	const title = data?.translations?.filter(el => el.language === locale)[0]
 		?.name
 	const days = data?.tourDays?.length
-	console.log(data?.tourDays)
 	return (
 		<>
 			<Header />
@@ -56,7 +55,7 @@ export const ProductPage = () => {
 									<span className='font-normal'>
 										{t('travel.cities', {
 											postProcess: 'interval',
-											count: days,
+											count: days > !0 ? days : 1,
 										})}
 									</span>
 								</p>
@@ -66,7 +65,7 @@ export const ProductPage = () => {
 									<span className='font-normal'>
 										{t('travel.days', {
 											postProcess: 'interval',
-											count: days,
+											count: days > !0 ? days : 1,
 										})}
 									</span>
 								</p>

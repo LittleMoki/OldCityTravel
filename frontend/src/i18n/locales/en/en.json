@@ -52,8 +52,9 @@
 			"8": "Two-Day Bukhara Tour",
 			"9": "Two-Day Khiva Tour"
 		},
-		"days": "(1)[{{count}} Day];(2-4)[{{count}} Days];(5-inf)[{{count}} Days];",
-		"cities": "(1)[{{count}} City];(2-4)[{{count}} Cities];(5-inf)[{{count}} Cities];"
+		"days": "(0)[0 Days];(1)[{{count}} Day];(2-4)[{{count}} Days];(5-inf)[{{count}} Days];",
+    "cities": "(0)[0 Cities];(1)[{{count}} City];(2-4)[{{count}} Cities];(5-inf)[{{count}} Cities];"
+
 	},
 	"form": {
 		"button": "Book Now",

@@ -141,7 +141,7 @@ const AdminEditTour = () => {
 		setData({ ...data, image: e.target.files[0] })
 	}
 	return (
-		<div className='min-h-screen p-4'>
+		<div className='min-h-screen max-w-[1200px] mx-auto p-4'>
 			{/* Цена тура */}
 			<Card className='dark px-3 py-5 flex flex-col gap-4'>
 				<Input

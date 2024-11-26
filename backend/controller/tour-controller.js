@@ -135,7 +135,6 @@ const TourController = {
 		try {
 			const parsedTranslations = translations ? JSON.parse(translations) : []
 			const parsedTourDays = tourDays ? JSON.parse(tourDays) : []
-			console.log(req?.file)
 			const updatedTour = await prisma.tour.update({
 				where: { id: Number(id) },
 				data: {

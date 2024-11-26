@@ -8,7 +8,6 @@ import { Container } from '../ui/Container.jsx'
 import CustomTitle from '../ui/CustomTitle.jsx'
 
 export const TravelDirections = () => {
-	const { t } = useTranslation()
 	const { locale } = useParams() // Берем локаль из параметров URL
 	const [data, setData] = useState([])
 

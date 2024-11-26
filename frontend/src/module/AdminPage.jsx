@@ -33,7 +33,7 @@ const AdminPage = () => {
 		}
 	}
 	return (
-		<div className='min-h-screen py-5 px-2'>
+		<div className='min-h-screen max-w-[1200px] mx-auto py-5 px-2'>
 			<AdminCreateTour refresh={fetchData} />
 			<div className='grid lg:grid-cols-3 lg:gap-10 grid-cols-2 gap-5'>
 				{data.map(el => (
@@ -53,11 +53,11 @@ const AdminPage = () => {
 								className='hover:text-red-500 cursor-pointer'
 							/>
 						</CardHeader>
-						<CardBody className='overflow-visible py-2'>
+						<CardBody className='py-2 max-h-[200px] overflow-clip'>
 							<Link to={`/${locale}/admin/edit/${el?.id}`}>
 								<Image
 									alt='Card background'
-									className='object-cover rounded-xl'
+									className='object-cover rounded-xl w-full h-full'
 									src={`${BASE_PHOTO_URL}/${el?.image}`}
 								/>
 							</Link>

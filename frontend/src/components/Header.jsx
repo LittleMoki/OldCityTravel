@@ -20,7 +20,6 @@ export const Header = () => {
 			navigate(`/${language}`, { replace: true })
 		}
 	}
-	// console.log(document.body.style.overflow = 'hidden')
 	const [isScrolled, setIsScrolled] = useState(false)
 
 	useEffect(() => {

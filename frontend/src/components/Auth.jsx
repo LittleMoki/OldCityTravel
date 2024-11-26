@@ -26,9 +26,9 @@ const LoginPage = () => {
 	}
 
 	return (
-		<div className='min-h-screen flex justify-center items-center'>
-			<div className='max-w-[500px] flex flex-col gap-3'>
-				<img src={logo} />
+		<div className='min-h-screen bg-gray-800 flex justify-center items-center'>
+			<div className='max-w-[500px] flex flex-col items-center gap-3'>
+				<img src={logo} alt='logo' className='w-[150px] h-[150px]'/>
 				<Input
 					type='text'
 					placeholder='Логин'
@@ -41,7 +41,7 @@ const LoginPage = () => {
 					value={password}
 					onChange={e => setPassword(e.target.value)}
 				/>
-				<Button onClick={handleLogin}>Войти</Button>
+				<Button className='w-full' onClick={handleLogin}>Войти</Button>
 			</div>
 		</div>
 	)

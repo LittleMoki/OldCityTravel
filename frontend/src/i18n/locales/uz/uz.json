@@ -52,8 +52,8 @@
 			"8": "Ikki kunlik Buxoro ekskursiyasi",
 			"9": "Ikki kunlik Xiva ekskursiyasi"
 		},
-		"days": "(1)[{{count}} Kun];(2-4)[{{count}} Kunlar];(5-inf)[{{count}} Kunlar];",
-		"cities": "(1)[{{count}} Shahar];(2-4)[{{count}} Shaharlar];(5-inf)[{{count}} Shaharlar];"
+		"days": "(0)[0 Kun];(1)[{{count}} Kun];(2-4)[{{count}} Kun];(5-inf)[{{count}} Kun];",
+		"cities": "(0)[0 Shahar];(1)[{{count}} Shahar];(2-4)[{{count}} Shahar];(5-inf)[{{count}} Shahar];"
 	},
 	"form": {
 		"button": "Bron qilish",
