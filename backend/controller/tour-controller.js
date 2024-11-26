@@ -97,9 +97,10 @@ const TourController = {
 	},
 	getTourSlag: async (req, res) => {
 		const { url } = req.params
-
+		const { lang } = req.query // Убедитесь, что `lang` передаётся корректно
+	
 		try {
-			const tour = await prisma.tour.findUnique({
+			const tours = await prisma.tour.findMany({
 				where: { url },
 				include: {
 					translations: { where: { language: lang } },
@@ -110,10 +111,16 @@ const TourController = {
 					},
 				},
 			})
-			if (!tour) {
+	
+			if (tours.length === 0) {
 				return res.status(404).json({ error: 'Тур не найден' })
 			}
-			res.status(200).json(tour)
+	
+			if (tours.length > 1) {
+				return res.status(400).json({ error: 'Найдено несколько туров с одинаковым URL' })
+			}
+	
+			res.status(200).json(tours[0])
 		} catch (error) {
 			console.error('Ошибка при получении тура:', error)
 			res
@@ -121,6 +128,7 @@ const TourController = {
 				.json({ error: error.message || 'Ошибка при получении тура' })
 		}
 	},
+	
 	getTourTranslate: async (req, res) => {
 		const { id } = req.params
 		const { lang = 'en' } = req.query

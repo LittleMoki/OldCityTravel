@@ -14,10 +14,11 @@ const AdminCreateTour = ({ refresh }) => {
 	const [tourData, setTourData] = useState({
 		cost: '',
 		image: null,
+		url: '',
 		translations: [
-			{ language: 'ru', name: '' },
-			{ language: 'uz', name: '' },
-			{ language: 'en', name: '' },
+			{ language: 'ru', name: '', description: '' },
+			{ language: 'uz', name: '', description: '' },
+			{ language: 'en', name: '', description: '' },
 		],
 		tourDays: [
 			{
@@ -139,6 +140,11 @@ const AdminCreateTour = ({ refresh }) => {
 				label='Цена тура'
 				value={tourData.cost}
 				onChange={e => handleChange('cost', e.target.value)}
+			/>
+			<Input
+				label='Ссылка на тур'
+				value={tourData.url}
+				onChange={e => handleChange('url', e.target.value)}
 			/>
 			<Input type='file' label='Изображение' onChange={handleFileChange} />
 
