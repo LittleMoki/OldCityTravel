@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model tour {
+  id           Int             @id @default(autoincrement())
+  image        String
+  cost         String
+  tourDays     tourDays[]
+  translations TourTranslate[]
+}
+
+model TourTranslate {
+  id       Int    @id @default(autoincrement())
+  tour     tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
+  tourId   Int
+  language String // 'ru', 'en', 'uz'
+  name     String
+}
+
+model tourDays {
+  id           Int                   @id @default(autoincrement())
+  breakfast    Boolean
+  lunch        Boolean
+  dinner       Boolean
+  tour         tour                  @relation(fields: [tourId], references: [id], onDelete: Cascade)
+  tourId       Int
+  translations tourDaysTranslation[]
+}
+
+model tourDaysTranslation {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  tourDays    tourDays @relation(fields: [tourDaysId], references: [id], onDelete: Cascade)
+  language    String // 'ru', 'en', 'uz'
+  tourDaysId  Int
+}

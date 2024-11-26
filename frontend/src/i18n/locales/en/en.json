@@ -1,0 +1,128 @@
+{
+	"button": "Contact",
+	"second_button": "View details",
+	"main_button": "Book Now",
+	"call_button": "Contact Us",
+	"header": {
+		"about": "About Us",
+		"whyUs": "Why Us?",
+		"tours": "Tours",
+		"contact": "Contacts"
+	},
+	"hero": {
+		"title": "Discover the Magic of Central Asia with Old City Travel",
+		"subtitle": "Unforgettable Journeys along the Ancient Silk Road",
+		"button_1": "Explore Tours"
+	},
+	"about": {
+		"title": "About Us",
+		"subtitle": [
+			"Old City Travel is a team of passionate travelers and professionals specializing in organizing tours around Central Asia.",
+			"We are here to introduce you to the richness and diversity of this amazing region, which stretches along the ancient Silk Road routes. Our tours are not just trips, but an opportunity to immerse yourself in the atmosphere of the past, feel the spirit of great civilizations, and enjoy the beauty of nature.",
+			"Our goal is to make your journey not only educational but also comfortable, so we take care of all the details, from transportation to the selection of hotels and restaurants."
+		]
+	},
+	"whyUs": {
+		"title": "Why Choose Us?",
+		"advantages": [
+			{
+				"title": "Experience and Knowledge of the Region",
+				"text": "We specialize exclusively in Central Asia, and our team has a deep understanding of the cultural and historical heritage of the region. We know how to turn your trip into a real discovery, showing you not only popular attractions but also hidden gems known only to locals."
+			},
+			{
+				"title": "Personalized Approach",
+				"text": "We understand that every traveler is unique, so we create tours that fully meet your interests and preferences. From route planning to the choice of comfort level, we ensure that every wish of yours is considered."
+			},
+			{
+				"title": "Flawless Service",
+				"text": "We take care of all the arrangements for your trip so that you can enjoy every moment. From transfers and accommodation to excursions and meals, every detail is carefully planned. With Old City Travel, your journey will be not only exciting but also absolutely comfortable and safe."
+			}
+		]
+	},
+	"travel": {
+		"title": "Popular Tours",
+		"cards": {
+			"1": "Tashkent Tour",
+			"2": "Samarkand Tour",
+			"3": "Bukhara Tour",
+			"4": "Khiva Tour",
+			"5": "Uzbekistan Tour",
+			"6": "Two-Day Tashkent Tour",
+			"7": "Two-Day Samarkand Tour",
+			"8": "Two-Day Bukhara Tour",
+			"9": "Two-Day Khiva Tour"
+		},
+		"days": "(1)[{{count}} Day];(2-4)[{{count}} Days];(5-inf)[{{count}} Days];",
+		"cities": "(1)[{{count}} City];(2-4)[{{count}} Cities];(5-inf)[{{count}} Cities];"
+	},
+	"form": {
+		"button": "Book Now",
+		"title": "Book Now",
+		"name": "Your Name",
+		"email": "Your Email",
+		"wishes": "Your Wishes",
+		"phone": "Your Phone"
+	},
+	"services": {
+		"title": "Our Services",
+		"services": [
+			{
+				"title": "Trip Organization",
+				"text": "We create customized routes, taking into account all your preferences and interests, so that your trip becomes unforgettable."
+			},
+			{
+				"title": "Visa Assistance",
+				"text": "We help you with visa arrangements and the preparation of all necessary documents for a comfortable and hassle-free journey."
+			},
+			{
+				"title": "Transfer Organization",
+				"text": "We organize comfortable transfers for you, ensuring safe and timely movements at any point in your trip."
+			},
+			{
+				"title": "Meal Organization",
+				"text": "We select restaurants and cafes according to your tastes and regional cuisine features, ensuring a gastronomic pleasure at every place."
+			},
+			{
+				"title": "Flight Booking",
+				"text": "We will find the most convenient and profitable flight options for you, taking care of all the booking details."
+			},
+			{
+				"title": "Hotel Booking",
+				"text": "We will find the best hotels for you that meet your comfort and location requirements, so you feel at home in any part of Central Asia."
+			}
+		]
+	},
+	"footer": {
+		"title": "Old City Travel is a team of passionate travelers and professionals specializing in organizing tours around Central Asia.",
+		"departments": {
+			"title": "Departments",
+			"home": "Home",
+			"about": "About Us",
+			"service": "Our Services",
+			"travel": "Travel",
+			"contact": "Contact"
+		},
+		"contactInfo": {
+			"title": "Contact",
+			"map": "Bukhara"
+		},
+		"copyright": "© 2024 Old City Travel. All rights reserved."
+	},
+	"support": "Supported by",
+	"productPage": {
+		"tourName": "Tour Name",
+		"days": "Days",
+		"cities": "Duration",
+		"price": "Price"
+	},
+	"tourAccordion": {
+		"1": "Arrival in the capital - Tashkent",
+		"2": "Historical Tashkent - city tour and train transfer to Samarkand",
+		"3": "Famous historical sites of Samarkand - city tour",
+		"4": "Samarkand countryside tour and train transfer to Bukhara",
+		"5": "Jewel of the East - Bukhara historical tour",
+		"6": "Bukhara countryside tour and drive to Khiva",
+		"7": "Returning home - until we meet again, Uzbekistan."
+	},
+	"tourDay": "Day"
+}
